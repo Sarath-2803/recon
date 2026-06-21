@@ -36,7 +36,7 @@ No external dependencies are required.
 Clone the repository:
 
 ```bash
-git clone https://github.com/yourusername/recon.git
+git clone https://github.com/Sarath-2803/recon.git
 cd recon
 ```
 
