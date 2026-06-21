@@ -238,7 +238,8 @@ def probe_service(target, port):
 
     return best
 
-for port in range(1, 1025):
+for port in range(1, 1025):                     # Add more ports as needed
+    print(f"Scanning port {port}...", end="\r")
     if scan_port(target, port):
         result = probe_service(target, port)
 
@@ -259,6 +260,10 @@ def extract_info(meta):
     return meta.get("server") or meta.get("banner") or "-"
 
 def print_report(results):
+    if not results:
+        print("No open ports found.")
+        return
+    
     print("\nPORT\tSERVICE\tCONF\tEXPOSURE\tINFO")
     print("-" * 60)
 
@@ -274,5 +279,5 @@ def print_report(results):
                 print(f"\t\t{p['path']}\t{p['status']}")
             print("\t\t"+"-" * 50)
 
-print("\nResult")
+print("\n\nResult")
 print_report(results)
